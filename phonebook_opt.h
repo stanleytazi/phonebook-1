@@ -3,6 +3,8 @@
 
 #define MAX_LAST_NAME_SIZE 16
 #define MAX_HASH_TABLE_SIZE 1024
+#define MAX_MEMORY_POOL_SIZE 1000000
+//#define MEMORY_POOL_FOR_EACH_HASH_TABLE_ENTRY 1
 /* TODO: After modifying the original version, uncomment the following
  * line to set OPT properly */
 #define OPT 1
@@ -34,5 +36,8 @@ typedef struct __PHONE_BOOK_HASH_ELEMENT {
 
 entry *findName(char lastName[], entry *pHead);
 entry *append(char lastName[], entry *e);
+
+void initFreeEntryPool(unsigned int freeBufferNum);
+void createFreeEntryPool(unsigned int freeBufferNum);
 
 #endif

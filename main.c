@@ -52,6 +52,16 @@ int main(int argc, char *argv[])
 #if defined(__GNUC__)
     __builtin___clear_cache((char *) pHead, (char *) pHead + sizeof(entry));
 #endif
+
+#ifdef OPT
+
+#ifdef MEMORY_POOL_FOR_EACH_HASH_TABLE_ENTRY
+    initFreeEntryPool(300);
+#else
+    createFreeEntryPool(MAX_MEMORY_POOL_SIZE);
+#endif
+
+#endif
     clock_gettime(CLOCK_REALTIME, &start);
     while (fgets(line, sizeof(line), fp)) {
         while (line[i] != '\0')
